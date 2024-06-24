@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h5{
+    font-weight: 400;
+    font-size: 14px;
+}
+.arrow{
+    width: 10px;
+}
+.selected{
+    font-weight: 900;
+}
+
+
+.step {
+    margin-right: 5px;
+}
+
+.arrow {
+    margin: 0 5px;
+}
