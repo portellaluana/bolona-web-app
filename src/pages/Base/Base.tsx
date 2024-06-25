@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     <div className={styles.container}>
       <Breadcrumbs/>
       <Title children={"Escolha"} span={"a base"} />
-      <Slider />
+      <Slider/>
       <Button className={styles.secondary} label={"Voltar"} />
     </div>
   );

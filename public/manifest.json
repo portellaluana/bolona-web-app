@@ -1,0 +1,22 @@
+{
+    "name": "Bolona",
+    "short_name": "App",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "description": "Autoatendimento em sorveteria.",
+    "icons": [
+      {
+        "src": "./src/assets/mini-icon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "./src/assets/max-icon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "theme_color": "#000000"
+  }
+  
