@@ -6,9 +6,10 @@ interface CardProps {
   description: string;
   price: string;
   image: string;
+  onAddClick?: () => void;
 }
 
-const Card = ({ title, description, price, image }: CardProps) => {
+const Card = ({ title, description, price, image, onAddClick }: CardProps) => {
   return (
     <div
       className={styles.container}
@@ -20,7 +21,7 @@ const Card = ({ title, description, price, image }: CardProps) => {
         <h3 className={styles.price}>
           R$ <span>{price}</span>
         </h3>
-        <Button label={"Adicionar"} className={styles.primary}/>
+        <Button label={"Adicionar"} className={styles.primary} onClick={onAddClick}/>
       </div>
     </div>
   );

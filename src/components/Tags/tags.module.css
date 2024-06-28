@@ -1,0 +1,36 @@
+.container{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding:  24px;
+}
+
+.primary {
+  padding: 4px 12px;
+  border: none;
+  border-radius: 100px;
+  width: 30%;
+  height: 36px;
+  font-size: 12px;
+  font-weight: 900;
+  background-color: black;
+  color: white;
+}
+
+.secondary {
+  padding: 4px 12px;
+  border: 1px solid black;
+  border-radius: 100px;
+  width: 30%;
+  height: 36px;
+  font-size: 12px;
+  font-weight: 900;
+  background-color: white;
+  color: black;
+}
+
+.button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
