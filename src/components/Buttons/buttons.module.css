@@ -1,0 +1,61 @@
+.primary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 100px;
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 900;
+  background-color: black;
+  color: white;
+}
+
+.tagButton {
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 100px;
+  width: 100%;
+  height: 40px;
+  font-size: 12px;
+  font-weight: 900;
+  background-color: white;
+  color: black;
+}
+
+.secondary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 100px;
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 900;
+  background-color: white;
+  color: black;
+  margin-top: 16px;
+}
+
+.button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+.minus, .plus{
+  width: 28px;
+  height: 28px;
+  border-radius: 50px;
+  border: 1px solid black;
+  background-color: white;
+  font-weight: 900;
+  font-size: 20px;
+}
+.primaryExtra{
+  margin: 0 24px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 100px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 900;
+  background-color: black;
+  color: white;
+}

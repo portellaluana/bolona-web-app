@@ -1,47 +1,36 @@
-import React, { useState, useEffect, useRef, useImperativeHandle, ForwardRefRenderFunction } from "react";
+//Slider.tsx
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useImperativeHandle,
+  ForwardRefRenderFunction,
+  Children,
+  ReactNode
+} from "react";
 import styles from "./slider.module.css";
-import { Swiper as SwiperType } from 'swiper/types';
+import { Swiper as SwiperType } from "swiper/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
+
 import { EffectCoverflow } from "swiper/modules";
-import casquinha from "../../assets/casquinha.png";
-import cascao from "../../assets/cascao.png";
-import copinho from "../../assets/copinho.png";
-import Card from "../Card/Card";
 
 interface SliderProps {
   onActiveNameChange: (name: string) => void;
+  children: ReactNode[];
 }
 
 interface SliderRef {
   slideTo: (index: number) => void;
 }
 
-const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = ({ onActiveNameChange }, ref) => {
+const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = (
+  { onActiveNameChange, children },
+  ref
+) => {
   const [activeName, setActiveName] = useState("Casquinha");
   const swiperRef = useRef<SwiperType | null>(null);
-
-  const base = [
-    {
-      name: "Casquinha",
-      description: "Uma bolona",
-      price: "5,00",
-      image: `${casquinha}`,
-    },
-    {
-      name: "Cascão",
-      description: "Duas bolonas",
-      price: "10,00",
-      image: `${cascao}`,
-    },
-    {
-      name: "Copinho",
-      description: "Três bolonas",
-      price: "15,00",
-      image: `${copinho}`,
-    },
-  ];
 
   useImperativeHandle(ref, () => ({
     slideTo: (index: number) => {
@@ -52,8 +41,8 @@ const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = ({ onActiveName
   }));
 
   useEffect(() => {
-    onActiveNameChange(activeName); 
-    localStorage.setItem('base', activeName);
+    onActiveNameChange(activeName);
+    localStorage.setItem("base", activeName);
   }, [activeName, onActiveNameChange]);
 
   return (
@@ -76,17 +65,10 @@ const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = ({ onActiveName
         }}
         modules={[EffectCoverflow]}
         className={styles.content}
-        onSlideChange={(swiper) => setActiveName(base[swiper.activeIndex].name)}
+        onSlideChange={(swiper) => setActiveName(children[swiper.activeIndex]?.props.title || "")}
       >
-        {base.map((item, index) => (
-          <SwiperSlide key={index} className={styles.slide}>
-            <Card
-              title={item.name}
-              description={item.description}
-              price={item.price}
-              image={item.image}
-            />
-          </SwiperSlide>
+        {Children.map(children, (child) => (
+          <SwiperSlide className={styles.slide}>{child}</SwiperSlide>
         ))}
       </Swiper>
     </div>
@@ -94,4 +76,3 @@ const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = ({ onActiveName
 };
 
 export default React.forwardRef(Slider);
-

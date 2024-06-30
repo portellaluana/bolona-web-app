@@ -1,26 +1,25 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 24px;
 }
 
-h5{
-    font-weight: 400;
-    font-size: 14px;
+h5 {
+  font-weight: 400;
+  font-size: 12px;
 }
-.arrow{
-    width: 10px;
+.arrow {
+  width: 10px;
 }
-.selected{
-    font-weight: 900;
+.selected {
+  font-weight: 900;
 }
-
 
 .step {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .arrow {
-    margin: 0 5px;
+  margin: 0 5px;
 }

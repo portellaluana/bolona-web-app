@@ -19,6 +19,6 @@ body {
   background: white;
   font-family: "Inter", sans-serif;
   max-width: 450px;
-  max-height: 600px;
+  height: 100vh !important;
   margin: 0 auto;
 }

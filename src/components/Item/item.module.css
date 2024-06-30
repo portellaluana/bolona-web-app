@@ -1,0 +1,33 @@
+.container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.content {
+    width: 88%;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+align-items: center;
+  }
+
+.name {
+  font-size: 16px;
+  font-weight: 900;
+  color: black;
+}
+
+.quantityContent{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+img{
+  max-width: 120px;
+}

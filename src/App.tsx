@@ -1,30 +1,38 @@
-// src/App.tsx
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import Home from './pages/Home/Home';
-import Base from './pages/Base/Base';
-
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App: React.FC = () => {
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').then(
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js").then(
         (registration) => {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          console.log(
+            "ServiceWorker registration successful with scope: ",
+            registration.scope
+          );
         },
         (error) => {
-          console.log('ServiceWorker registration failed: ', error);
+          console.log("ServiceWorker registration failed: ", error);
         }
       );
     });
   }
- 
+
+  const Home = lazy(() => import("./pages/Home/Home"));
+  const Base = lazy(() => import("./pages/Base/Base"));
+  const Flavor = lazy(() => import("./pages/Flavor/Flavor"));
+  const Extra = lazy(() => import("./pages/Extra/Extra"));
+
   return (
     <Router>
-      <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/" element={<Base />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/base" element={<Base />} />
+          <Route path="/flavor" element={<Flavor />} />
+          <Route path="/extra" element={<Extra />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 };

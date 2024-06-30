@@ -2,16 +2,15 @@ import { ReactNode } from "react";
 import styles from "./title.module.css";
 
 interface TitleProps {
-  children: ReactNode;
-  span: string;
+  children?: ReactNode;
+  span?: string;
+  className?: string;
 }
 
-const Title = ({ children, span }: TitleProps) => {
+const Title = ({ children, span, className }: TitleProps) => {
   return (
-    <h1 className={styles.title}>
-      {children}
-      <br />
-      <span className={styles.span}>{span}</span>
+    <h1 className={className ? styles[className] : "title"}>
+      {children} {span ? <span>{span}</span> : ""}
     </h1>
   );
 };
