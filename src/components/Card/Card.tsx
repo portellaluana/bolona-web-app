@@ -1,34 +1,44 @@
 import Button from "../Buttons/Button";
+import Description from "./Description/Description";
 import Title from "../Title/Title";
 import styles from "./card.module.css";
+import Price from "./Price/Price";
+import Text from "./Text/Text";
 
 interface CardProps {
-  flavor?: string,
+  text?: string;
   title?: string;
-  description?: string;
   price?: number;
   currency?: string;
   image: string;
   icon?: string;
   onAddClick?: () => void;
+  description?: string;
 }
 
-const Card = ({ title, description, price, currency, flavor, image, icon, onAddClick }: CardProps) => {
+const Card = ({
+  title,
+  price,
+  currency,
+  image,
+  icon,
+  onAddClick,
+  description,
+  text,
+}: CardProps) => {
   return (
     <div
       className={styles.container}
       style={{ backgroundImage: `url(${image})` }}
     >
-     <img src={icon} alt="icon" />
+      <img src={icon} alt="icon" />
       <div className={styles.content}>
-        <h4 className={styles.flavor}>{flavor}</h4>
-      <Title children={title} className='name'/>
 
-        <h4 className={styles.description}>{description}</h4>
-        <h3 className={styles.price}>
-          <span>{currency}{price}</span>
-        </h3>
-      <Button label={"Adicionar"} className="primary" onClick={onAddClick} />
+        <Text text={text} />
+        <Title children={title} className="name" />
+        <Description description={description} />
+        <Price currency={currency} price={price} />
+        <Button label={"Adicionar"} className="primary" onClick={onAddClick} />
       </div>
     </div>
   );

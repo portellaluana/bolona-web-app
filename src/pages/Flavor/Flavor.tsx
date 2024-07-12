@@ -61,6 +61,15 @@ const Flavor: React.FC = () => {
 
   const handleExtra = () => {
     navigate("/extra");
+    handleFlavor()
+  };
+
+  const previousPage = () => {
+    navigate(-1);
+  };
+
+  const handleFlavor = () => {
+    localStorage.setItem('flavor', activeTag)
   };
 
   useEffect(() => {
@@ -71,7 +80,7 @@ const Flavor: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Breadcrumbs />
+      <Breadcrumbs currentStep="Sabor" />
       <Title children={"Escolha"} span={"o sabor"} className="title"/>
       <Tags tags={tags} onTagClick={handleTagClick} activeName={activeTag} />
       <Slider onActiveNameChange={handleActiveNameChange}>
@@ -79,13 +88,14 @@ const Flavor: React.FC = () => {
           <Card
             key={index}
             icon={item.icon}
-            flavor={item.flavor}
+            text={item.flavor}
             title={item.name}
             image={item.image}
+            onAddClick={handleExtra}
           />
         ))}
       </Slider>
-      <Button className="secondary" label={"Voltar"} onClick={handleExtra}/>
+      <Button className="secondary" label={"Voltar"} onClick={previousPage}/>
     </div>
   );
 };

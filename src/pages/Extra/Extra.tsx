@@ -16,48 +16,48 @@ import Item from "../../components/Item/Item";
 import { useNavigate } from "react-router-dom";
 
 const Extra: React.FC = () => {
-  const itens = [
+  const items = [
     {
       image: `${casquinha}`,
       name: "Casquinha",
       currency: "R$ ",
       price: 5.0,
-      quantity: 0,
+      initialQuantity: 1,
     },
     {
       image: `${cascao}`,
       name: "Cascão",
       currency: "R$ ",
       price: 5.0,
-      quantity: 0,
+      initialQuantity: 1,
     },
     {
       image: `${copinho}`,
       name: "Copinho",
       currency: "R$ ",
       price: 5.0,
-      quantity: 0,
+      initialQuantity: 1,
     },
     {
       image: `${coberturaChocolate}`,
       name: "Cobertura de Chocolate",
       currency: "R$ ",
       price: 5.0,
-      quantity: 0,
+      initialQuantity: 1,
     },
     {
       image: `${coberturaMorango}`,
       name: "Cobertura de Morango",
       currency: "R$ ",
       price: 5.0,
-      quantity: 0,
+      initialQuantity: 1,
     },
     {
       image: `${canudinho}`,
       name: "Canudinho de Wafer",
       currency: "R$ ",
       price: 5.0,
-      quantity: 0,
+      initialQuantity: 1,
     },
   ];
 
@@ -66,27 +66,36 @@ const Extra: React.FC = () => {
   const handleHome = () => {
     navigate("/home");
   };
-  
+
+  const previousPage = () => {
+    navigate(-1);
+  };
+
   return (
     <div className={styles.container}>
-      <Breadcrumbs />
+      <Breadcrumbs currentStep="Extra" />
       <Title children={"Itens"} span={"adicionais"} className="title" />
       <Title children={"(Opcional)"} className="subtitle" />
-      <Slider onActiveNameChange={()=>{}}>
-      {itens.map((item, index) => (
-        <Item
-          key={index}
-          image={item.image}
-          name={item.name}
-          currency={item.currency}
-          price={item.price}
-          quantity={item.quantity}
-        />
-      ))}
-      </Slider>
-
-      <Button label={"Revisar pedido"} className="primaryExtra" onClick={handleHome}/>
-      <Button label={"Voltar"} className="secondary" />
+      <div className={styles.content}>
+        <Slider onActiveNameChange={() => {}}>
+          {items.map((item, index) => (
+            <Item
+              key={index}
+              image={item.image}
+              name={item.name}
+              currency={item.currency}
+              price={item.price}
+              initialQuantity={item.initialQuantity}
+            />
+          ))}
+        </Slider>
+      </div>
+      <Button
+        label={"Revisar pedido"}
+        className="primaryExtra"
+        onClick={handleHome}
+      />
+      <Button label={"Voltar"} className="secondary" onClick={previousPage} />
     </div>
   );
 };

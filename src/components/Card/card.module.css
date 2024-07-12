@@ -21,17 +21,3 @@
   font-weight: 900;
   margin: 0 !important;
 }
-.price {
-  font-size: 23px;
-  font-weight: 400;
-  margin-bottom: 18px;
-}
-.price span {
-  font-weight: 900;
-}
-
-.description, .flavor {
-  font-size: 14px;
-  font-weight: 600;
-  margin: 4px 0 6px 0;
-}

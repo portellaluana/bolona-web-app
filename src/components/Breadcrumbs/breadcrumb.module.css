@@ -9,17 +9,17 @@ h5 {
   font-weight: 400;
   font-size: 12px;
 }
+
 .arrow {
   width: 10px;
+  margin: 0 5px;
 }
+
 .selected {
   font-weight: 900;
+  margin-right: 5px;
 }
 
 .step {
   margin-right: 5px;
-}
-
-.arrow {
-  margin: 0 5px;
 }

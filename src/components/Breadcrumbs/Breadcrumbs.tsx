@@ -1,8 +1,13 @@
+// Breadcrumbs.tsx
 import React from "react";
 import arrow from "../../assets/arrow.png";
 import styles from "./breadcrumb.module.css";
 
-const Breadcrumbs = () => {
+interface BreadcrumbsProps {
+    currentStep?: string;
+}
+
+const Breadcrumbs = ({ currentStep }: BreadcrumbsProps) => {
     const steps = [
         { id: 1, name: 'Base' },
         { id: 2, name: 'Sabor' },
@@ -14,7 +19,9 @@ const Breadcrumbs = () => {
         <div className={styles.container}>
             {steps.map((item, index) => (
                 <React.Fragment key={item.id}>
-                    <h5 className={styles.step}>{item.name}</h5>
+                    <h5 className={currentStep === item.name ? `${styles.step} ${styles.selected}` : styles.step}>
+                        {item.name}
+                    </h5>
                     {index < steps.length - 1 && (
                         <img src={arrow} alt="arrow" className={styles.arrow} />
                     )}

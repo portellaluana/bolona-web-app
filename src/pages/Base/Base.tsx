@@ -58,16 +58,25 @@ const Base: React.FC = () => {
     setActiveTag(name);
   };
 
-
   const navigate = useNavigate();
 
-  const handleFlavor = () => {
+  const nextPage = () => {
     navigate("/flavor");
+    handleBase()
+  };
+
+  const previousPage = () => {
+    navigate(-1);
+  };
+
+  const handleBase = () => {
+    localStorage.setItem('base', activeTag )
+    console.log(activeTag);
   };
 
   return (
     <div className={styles.container}>
-      <Breadcrumbs />
+      <Breadcrumbs currentStep="Base" />
       <Title children={"Escolha"} span={"a base"} className="title" />
       <Tags tags={tags} onTagClick={handleTagClick} activeName={activeTag} />
       <Slider onActiveNameChange={handleActiveNameChange}>
@@ -80,10 +89,11 @@ const Base: React.FC = () => {
             currency={item.currency}
             price={item.price}
             image={item.image}
+            onAddClick={nextPage}
           />
         ))}
       </Slider>
-      <Button label={"Voltar"} className="secondary" onClick={handleFlavor}/>
+      <Button label={"Voltar"} className="secondary" onClick={previousPage}/>
     </div>
   );
 };
