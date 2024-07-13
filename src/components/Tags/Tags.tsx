@@ -27,7 +27,7 @@ const Tags: React.FC<TagsProps> = ({ tags, onTagClick, activeName }) => {
         <Button
           key={index}
           label={tag}
-          className={activeTagIndex === index ? 'primary' : 'tagButton'}
+          className={activeTagIndex === index ? 'tagButtonActive' : 'tagButton'}
           onClick={() => handleTagClick(index)}
         />
       ))}

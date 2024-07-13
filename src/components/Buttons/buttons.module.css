@@ -1,45 +1,40 @@
-.primary {
+button {
   padding: 10px 20px;
-  border: none;
   border-radius: 100px;
   width: 100%;
   height: 40px;
-  font-size: 14px;
-  font-weight: 900;
+  font-size: 16px;
+  border: none;
+  font-family: "Inter", sans-serif;
   background-color: black;
+  font-weight: 600;
   color: white;
+  display: flex;
+  justify-content: center;
 }
 
 .tagButton {
-  padding: 10px 20px;
   border: 1px solid black;
-  border-radius: 100px;
-  width: 100%;
-  height: 40px;
-  font-size: 12px;
-  font-weight: 900;
   background-color: white;
   color: black;
+  font-size: 14px;
+}
+.tagButtonActive {
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+  font-size: 14px;
 }
 
+
 .secondary {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 100px;
-  width: 100%;
-  height: 40px;
-  font-size: 14px;
-  font-weight: 900;
   background-color: white;
   color: black;
   margin-top: 16px;
 }
 
-.button:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
-}
-.minus, .plus{
+.minus,
+.plus {
   width: 28px;
   height: 28px;
   border-radius: 50px;
@@ -47,15 +42,10 @@
   background-color: white;
   font-weight: 900;
   font-size: 20px;
+  padding: 0;
+  color: black;
 }
-.primaryExtra{
+.primaryExtra {
   margin: 0 24px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 100px;
-  height: 40px;
-  font-size: 14px;
-  font-weight: 900;
-  background-color: black;
-  color: white;
+  width: 90%;
 }

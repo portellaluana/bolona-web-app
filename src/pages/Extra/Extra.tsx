@@ -14,6 +14,7 @@ import canudinho from "../../assets/extra/extra-canudinho.png";
 import Item from "../../components/Item/Item";
 
 import { useNavigate } from "react-router-dom";
+import { useUserSelection } from "../../context/UserSelectionContext";
 
 const Extra: React.FC = () => {
   const items = [
@@ -62,13 +63,16 @@ const Extra: React.FC = () => {
   ];
 
   const navigate = useNavigate();
+  const { setBase, setFlavors } = useUserSelection();
 
   const handleHome = () => {
-    navigate("/home");
+    navigate("/");
   };
 
   const previousPage = () => {
-    navigate(-1);
+    navigate('/flavor');
+    setFlavors(null)
+    setBase(null)
   };
 
   return (

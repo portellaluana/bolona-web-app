@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { UserSelectionProvider } from "./context/UserSelectionContext";
 
 const App: React.FC = () => {
   if ("serviceWorker" in navigator) {
@@ -18,22 +19,25 @@ const App: React.FC = () => {
     });
   }
 
+//pra fazer loading
   const Home = lazy(() => import("./pages/Home/Home"));
   const Base = lazy(() => import("./pages/Base/Base"));
   const Flavor = lazy(() => import("./pages/Flavor/Flavor"));
   const Extra = lazy(() => import("./pages/Extra/Extra"));
 
   return (
+    <UserSelectionProvider>
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/base" element={<Base />} />
           <Route path="/flavor" element={<Flavor />} />
           <Route path="/extra" element={<Extra />} />
         </Routes>
       </Suspense>
     </Router>
+    </UserSelectionProvider>
   );
 };
 

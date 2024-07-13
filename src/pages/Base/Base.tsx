@@ -1,5 +1,6 @@
-// Base.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUserSelection } from "../../context/UserSelectionContext";
 import Button from "../../components/Buttons/Button";
 import styles from "./base.module.css";
 import Slider from "../../components/Slider/Slider";
@@ -8,47 +9,66 @@ import Title from "../../components/Title/Title";
 import Tags from "../../components/Tags/Tags";
 import Card from "../../components/Card/Card";
 
-import casquinha from "../../assets/casquinha.png";
-import cascao from "../../assets/cascao.png";
-import copinho from "../../assets/copinho.png";
+import casquinhaImg from "../../assets/base/casquinha.png";
+import cascaoImg from "../../assets/base/cascao.png";
+import copinhoImg from "../../assets/base/copinho.png";
 
-import iconCasquinha from "../../assets/base/icon-casquinha.png";
-import iconCascao from "../../assets/base/icon-cascao.png";
-import iconCopinho from "../../assets//base/icon-copinho.png";
-
-import { useNavigate } from "react-router-dom";
+import casquinhaIcon from "../../assets/icons/casquinha.png";
+import cascaoIcon from "../../assets/icons/cascao.png";
+import copinhoIcon from "../../assets/icons/copinho.png";
+import canudinhoIcon from "../../assets/icons/canudinho.png";
+import coberturaIcon from "../../assets/icons/cobertura.png";
+import flavorEmpty from "../../assets/icons/empty.png";
 
 const Base: React.FC = () => {
-  const base = [
+  const baseOptions = [
     {
       name: "Casquinha",
       description: "Uma bolona",
-      currency: 'R$ ',
+      currency: "R$ ",
       price: 5,
-      image: `${casquinha}`,
-      icon:`${iconCasquinha}`,
+      image: `${casquinhaImg}`,
+      extra1: `${canudinhoIcon}`,
+      firstFlavor: `${flavorEmpty}`,
+      base: `${casquinhaIcon}`,
     },
     {
       name: "Cascão",
       description: "Duas bolonas",
-      currency: 'R$ ',
+      currency: "R$ ",
       price: 10,
-      image: `${cascao}`,
-      icon:`${iconCascao}`,
+      image: `${cascaoImg}`,
+      extra1: `${coberturaIcon}`,
+      firstFlavor: `${flavorEmpty}`,
+      secondFlavor: `${flavorEmpty}`,
+      base: `${cascaoIcon}`,
     },
     {
       name: "Copinho",
       description: "Três bolonas",
-      currency: 'R$ ',
+      currency: "R$ ",
       price: 15,
-      image: `${copinho}`,
-      icon:`${iconCopinho}`,
+      image: `${copinhoImg}`,
+      extra1: `${canudinhoIcon}`,
+      extra2: `${coberturaIcon}`,
+      firstFlavor: `${flavorEmpty}`,
+      secondFlavor: `${flavorEmpty}`,
+      thirdFlavor: `${flavorEmpty}`,
+      base: `${copinhoIcon}`,
     },
   ];
 
-  const tags = base.map((item) => item.name);
+  const tags = baseOptions.map((item) => item.name);
 
   const [activeTag, setActiveTag] = useState<string | null>("Casquinha");
+  const { base, setBase } = useUserSelection();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (base) {
+      navigate("/flavor");
+    }
+  }, [base, navigate]);
 
   const handleTagClick = (index: number) => {
     setActiveTag(tags[index]);
@@ -58,21 +78,18 @@ const Base: React.FC = () => {
     setActiveTag(name);
   };
 
-  const navigate = useNavigate();
-
-  const nextPage = () => {
-    navigate("/flavor");
-    handleBase()
+  const handleNextPage = () => {
+    if (activeTag) {
+      setBase(activeTag);
+    }
   };
 
   const previousPage = () => {
     navigate(-1);
+    setBase(null);
   };
 
-  const handleBase = () => {
-    localStorage.setItem('base', activeTag )
-    console.log(activeTag);
-  };
+  const activeBase = baseOptions.find((item) => item.name === activeTag);
 
   return (
     <div className={styles.container}>
@@ -80,20 +97,25 @@ const Base: React.FC = () => {
       <Title children={"Escolha"} span={"a base"} className="title" />
       <Tags tags={tags} onTagClick={handleTagClick} activeName={activeTag} />
       <Slider onActiveNameChange={handleActiveNameChange}>
-        {base.map((item, index) => (
+        {baseOptions.map((item, index) => (
           <Card
             key={index}
-            icon={item.icon}
             title={item.name}
             description={item.description}
             currency={item.currency}
             price={item.price}
             image={item.image}
-            onAddClick={nextPage}
+            onAddClick={handleNextPage}
+            extra1={item.extra1}
+            extra2={item.extra2}
+            firstFlavor={item.firstFlavor}
+            secondFlavor={item.secondFlavor}
+            thirdFlavor={item.thirdFlavor}
+            base={item.base}
           />
         ))}
       </Slider>
-      <Button label={"Voltar"} className="secondary" onClick={previousPage}/>
+      <Button label={"Voltar"} className="secondary" onClick={previousPage} />
     </div>
   );
 };

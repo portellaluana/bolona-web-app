@@ -10,7 +10,7 @@ interface TitleProps {
 const Title = ({ children, span, className }: TitleProps) => {
   return (
     <h1 className={className ? styles[className] : "title"}>
-      {children} {span ? <span>{span}</span> : ""}
+      {children}<br></br>{span ? <span>{span}</span> : ""}
     </h1>
   );
 };
