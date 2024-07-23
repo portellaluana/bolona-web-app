@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90vh;
+}
+
+.content {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  height: 63%;
+}
+
+.loadingScreen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  background-image: url(../../assets/loading/loading.gif);
+  background-repeat: no-repeat;
+  background-size: contain; /* Ajusta a imagem ao tamanho do contêiner */
+  width: 180px;
+  height: 270px;
+}

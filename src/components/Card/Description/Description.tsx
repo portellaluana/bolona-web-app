@@ -8,9 +8,9 @@ interface DescriptionProps {
 
 const Description = ({ description }: DescriptionProps) => {
   return (
-    <h1 className={styles.description}>
+    <h5 className={styles.description}>
       {description}
-    </h1>
+    </h5>
   );
 };
 

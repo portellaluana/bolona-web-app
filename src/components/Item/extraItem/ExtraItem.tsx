@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "../Buttons/Button";
-import Price from "../Card/Price/Price";
-import Title from "../Title/Title";
-import styles from "./item.module.css";
+import Button from "../../Buttons/Button";
+import Price from "../../Card/Price/Price";
+import Title from "../../Title/Title";
+import styles from "./extraItem.module.css";
 
 interface ItemProps {
   image: string;

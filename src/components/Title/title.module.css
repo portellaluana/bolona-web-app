@@ -10,6 +10,11 @@
   color: black;
   font-weight: 900;
 }
+.nameWhite {
+  font-size: 28px;
+  color: white;
+  font-weight: 900;
+}
 
 .title span {
   font-weight: 900;

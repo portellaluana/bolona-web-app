@@ -24,6 +24,7 @@ const App: React.FC = () => {
   const Base = lazy(() => import("./pages/Base/Base"));
   const Flavor = lazy(() => import("./pages/Flavor/Flavor"));
   const Extra = lazy(() => import("./pages/Extra/Extra"));
+  const OrderSumary = lazy(() => import("./pages/Summary/OrderSummary"));
 
   return (
     <UserSelectionProvider>
@@ -34,6 +35,7 @@ const App: React.FC = () => {
           <Route path="/base" element={<Base />} />
           <Route path="/flavor" element={<Flavor />} />
           <Route path="/extra" element={<Extra />} />
+          <Route path="/summary" element={<OrderSumary />} />
         </Routes>
       </Suspense>
     </Router>

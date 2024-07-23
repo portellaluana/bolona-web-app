@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useUserSelection } from "../../context/UserSelectionContext";
 import Button from "../../components/Buttons/Button";
 import styles from "./flavor.module.css";
-import Slider from "../../components/Slider/Slider";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import Title from "../../components/Title/Title";
 import Tags from "../../components/Tags/Tags";
@@ -23,6 +22,7 @@ import flavorEmpty from "../../assets/icons/empty.png";
 import flavorMorango from "../../assets/icons/morango.png";
 import flavorChocolate from "../../assets/icons/chocolate.png";
 import flavorCreme from "../../assets/icons/creme.png";
+import SliderFlavor from "../../components/Slider/SliderFlavor";
 
 const Flavor: React.FC = () => {
   const flavorOptions = [
@@ -145,7 +145,7 @@ const Flavor: React.FC = () => {
       <Breadcrumbs currentStep="Sabor" />
       <Title children={titleChildren} span={titleSpan} className="title" />
       <Tags tags={tags} onTagClick={handleTagClick} activeName={activeTag} />
-      <Slider onActiveNameChange={handleActiveNameChange}>
+      <SliderFlavor onActiveNameChange={handleActiveNameChange}>
         {flavorOptions.map((item, index) => (
           <Card
             key={index}
@@ -161,7 +161,7 @@ const Flavor: React.FC = () => {
             base={item.base}
           />
         ))}
-      </Slider>
+      </SliderFlavor>
       <Button className="secondary" label={"Voltar"} onClick={previousPage} />
     </div>
   );

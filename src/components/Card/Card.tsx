@@ -39,6 +39,8 @@ const Card = ({
   thirdFlavor,
   base,
 }: CardProps) => {
+
+
   return (
     <div
       className={styles.container}
@@ -54,9 +56,9 @@ const Card = ({
         />
       <div className={styles.content}>
         <Text text={text} />
-        <Title children={title} className="name" />
+        <Title children={title} className="nameWhite" />
         <Description description={description} />
-        <Price currency={currency} price={price} />
+        <Price currency={currency} price={price} className="priceWhite"/>
         <Button label={"Adicionar"} className="primary" onClick={onAddClick} />
       </div>
     </div>

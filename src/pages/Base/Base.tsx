@@ -59,9 +59,10 @@ const Base: React.FC = () => {
   ];
 
   const tags = baseOptions.map((item) => item.name);
+  const values = baseOptions.map((item) => item.price);
 
   const [activeTag, setActiveTag] = useState<string | null>("Casquinha");
-  const { base, setBase } = useUserSelection();
+  const { base, setBase, baseValue, setBaseValue } = useUserSelection();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -72,15 +73,24 @@ const Base: React.FC = () => {
 
   const handleTagClick = (index: number) => {
     setActiveTag(tags[index]);
+    handlePrice(index);
   };
 
   const handleActiveNameChange = (name: string) => {
+    const index = tags.findIndex(tag => tag === name);
     setActiveTag(name);
+    handlePrice(index);
+  };
+
+  const handlePrice = (index: number) => {
+    setBaseValue(values[index]);
   };
 
   const handleNextPage = () => {
     if (activeTag) {
+      const index = tags.findIndex(tag => tag === activeTag);
       setBase(activeTag);
+      handlePrice(index);
     }
   };
 

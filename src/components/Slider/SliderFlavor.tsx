@@ -24,11 +24,11 @@ interface SliderRef {
   slideTo: (index: number) => void;
 }
 
-const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = (
+const SliderFlavor: ForwardRefRenderFunction<SliderRef, SliderProps> = (
   { onActiveNameChange, children },
   ref
 ) => {
-  const [activeName, setActiveName] = useState("Casquinha");
+  const [activeName, setActiveName] = useState("Morango");
   const swiperRef = useRef<SwiperType | null>(null);
 
   useImperativeHandle(ref, () => ({
@@ -74,4 +74,4 @@ const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = (
   );
 };
 
-export default React.forwardRef(Slider);
+export default React.forwardRef(SliderFlavor);

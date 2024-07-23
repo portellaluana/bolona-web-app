@@ -1,4 +1,3 @@
-// Breadcrumbs.tsx
 import React from "react";
 import arrow from "../../assets/arrow.png";
 import styles from "./breadcrumb.module.css";

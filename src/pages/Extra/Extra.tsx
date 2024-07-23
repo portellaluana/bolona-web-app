@@ -11,10 +11,9 @@ import copinho from "../../assets/extra/extra-copinho.png";
 import coberturaChocolate from "../../assets/extra/extra-cobertura-chocolate.png";
 import coberturaMorango from "../../assets/extra/extra-cobertura-morango.png";
 import canudinho from "../../assets/extra/extra-canudinho.png";
-import Item from "../../components/Item/Item";
+import ExtraItem from "../../components/Item/extraItem/ExtraItem";
 
 import { useNavigate } from "react-router-dom";
-import { useUserSelection } from "../../context/UserSelectionContext";
 
 const Extra: React.FC = () => {
   const items = [
@@ -63,16 +62,16 @@ const Extra: React.FC = () => {
   ];
 
   const navigate = useNavigate();
-  const { setBase, setFlavors } = useUserSelection();
+  // const { setBase, setFlavors } = useUserSelection();
 
-  const handleHome = () => {
-    navigate("/");
+  const handleSummary = () => {
+    navigate("/summary");
   };
 
   const previousPage = () => {
     navigate('/flavor');
-    setFlavors(null)
-    setBase(null)
+    // setFlavors(null)
+    // setBase(null)
   };
 
   return (
@@ -83,7 +82,7 @@ const Extra: React.FC = () => {
       <div className={styles.content}>
         <Slider onActiveNameChange={() => {}}>
           {items.map((item, index) => (
-            <Item
+            <ExtraItem
               key={index}
               image={item.image}
               name={item.name}
@@ -97,7 +96,7 @@ const Extra: React.FC = () => {
       <Button
         label={"Revisar pedido"}
         className="primaryExtra"
-        onClick={handleHome}
+        onClick={handleSummary}
       />
       <Button label={"Voltar"} className="secondary" onClick={previousPage} />
     </div>
