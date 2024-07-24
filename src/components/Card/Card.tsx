@@ -58,7 +58,7 @@ const Card = ({
         <Text text={text} />
         <Title children={title} className="nameWhite" />
         <Description description={description} />
-        <Price currency={currency} price={price} className="priceWhite"/>
+        <Price currency={currency} price={price}  className="priceWhite"/>
         <Button label={"Adicionar"} className="primary" onClick={onAddClick} />
       </div>
     </div>

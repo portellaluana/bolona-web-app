@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Button from "../../Buttons/Button";
 import Price from "../../Card/Price/Price";
 import Title from "../../Title/Title";
@@ -9,26 +8,16 @@ interface ItemProps {
   name: string;
   currency: string;
   price: number;
-  initialQuantity: number;
 }
 
-const Item = ({ image, name, currency, price, initialQuantity }: ItemProps) => {
-  const [quantity, setQuantity] = useState(initialQuantity);
+const Item = ({ image, name, currency, price }: ItemProps) => {
 
   const itens = []
 
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
-  };
 
-  const decrementQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    }
-  };
 
   const handleItem = () => {
-    itens.push(quantity)
+    itens.push(name, price)
     console.log('itens',itens);
   }
 
@@ -37,13 +26,7 @@ const Item = ({ image, name, currency, price, initialQuantity }: ItemProps) => {
       <div className={styles.content}>
         <img src={image} alt={name} />
         <Title children={name} className="item-name" />
-        <Price currency={currency} price={price} />
-        
-        <div className={styles.quantityContent}>
-          <Button label={"-"} className="minus" onClick={decrementQuantity} />
-          <h4 className={styles.quantity}>{quantity}</h4>
-          <Button label={"+"} className="plus" onClick={incrementQuantity} />
-        </div>
+        <Price currency={currency} price={price} className="priceExtra" />
         <Button label={"Adicionar"} className="tagButton" onClick={handleItem}/>
       </div>
     </div>

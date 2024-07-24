@@ -16,12 +16,6 @@
   align-items: center;
 }
 
-.quantityContent {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-}
 img {
   max-width: 120px;
 }

@@ -7,9 +7,9 @@ interface PriceProps {
   className?: string;
 }
 
-const Price = ({ price, currency }: PriceProps) => {
+const Price = ({ price, currency, className }: PriceProps) => {
   return (
-    <h3 className={styles.price}>
+    <h3 className={className ? styles[className] : "price"}>
     <span>
       {currency}
       {price}

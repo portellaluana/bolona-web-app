@@ -1,10 +1,13 @@
-.price {
+.priceWhite {
   font-size: 23px;
-  font-weight: 400;
+  font-weight: 900;
   margin-bottom: 18px;
   color: white;
-
 }
-.price span {
+
+.price{
+  font-size: 20px;
   font-weight: 900;
+  margin-bottom: 18px;
+  color: black;
 }

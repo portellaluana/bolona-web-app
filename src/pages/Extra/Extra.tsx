@@ -22,42 +22,36 @@ const Extra: React.FC = () => {
       name: "Casquinha",
       currency: "R$ ",
       price: 5.0,
-      initialQuantity: 1,
     },
     {
       image: `${cascao}`,
       name: "Cascão",
       currency: "R$ ",
       price: 5.0,
-      initialQuantity: 1,
     },
     {
       image: `${copinho}`,
       name: "Copinho",
       currency: "R$ ",
       price: 5.0,
-      initialQuantity: 1,
     },
     {
       image: `${coberturaChocolate}`,
       name: "Cobertura de Chocolate",
       currency: "R$ ",
       price: 5.0,
-      initialQuantity: 1,
     },
     {
       image: `${coberturaMorango}`,
       name: "Cobertura de Morango",
       currency: "R$ ",
       price: 5.0,
-      initialQuantity: 1,
     },
     {
       image: `${canudinho}`,
       name: "Canudinho de Wafer",
       currency: "R$ ",
       price: 5.0,
-      initialQuantity: 1,
     },
   ];
 
@@ -88,7 +82,6 @@ const Extra: React.FC = () => {
               name={item.name}
               currency={item.currency}
               price={item.price}
-              initialQuantity={item.initialQuantity}
             />
           ))}
         </Slider>
