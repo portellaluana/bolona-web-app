@@ -1,18 +1,9 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useImperativeHandle,
-  ForwardRefRenderFunction,
-  Children,
-  ReactNode
-} from "react";
+import React, { useState, useEffect, useRef, useImperativeHandle, ForwardRefRenderFunction, Children, ReactNode } from "react";
 import styles from "./slider.module.css";
 import { Swiper as SwiperType } from "swiper/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
-
 import { EffectCoverflow } from "swiper/modules";
 
 interface SliderProps {
@@ -24,10 +15,7 @@ interface SliderRef {
   slideTo: (index: number) => void;
 }
 
-const SliderFlavor: ForwardRefRenderFunction<SliderRef, SliderProps> = (
-  { onActiveNameChange, children },
-  ref
-) => {
+const SliderFlavor: ForwardRefRenderFunction<SliderRef, SliderProps> = ({ onActiveNameChange, children }, ref) => {
   const [activeName, setActiveName] = useState("Morango");
   const swiperRef = useRef<SwiperType | null>(null);
 
@@ -41,7 +29,6 @@ const SliderFlavor: ForwardRefRenderFunction<SliderRef, SliderProps> = (
 
   useEffect(() => {
     onActiveNameChange(activeName);
-    localStorage.setItem("base", activeName);
   }, [activeName, onActiveNameChange]);
 
   return (

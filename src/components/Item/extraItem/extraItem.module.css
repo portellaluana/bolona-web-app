@@ -19,3 +19,8 @@
 img {
   max-width: 120px;
 }
+.deleteButton{
+  position: absolute;
+  right: 110px;
+  top: 76px;
+}

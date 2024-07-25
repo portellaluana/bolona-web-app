@@ -1,3 +1,4 @@
+// Slider.tsx
 import React, {
   useState,
   useEffect,
@@ -41,7 +42,6 @@ const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = (
 
   useEffect(() => {
     onActiveNameChange(activeName);
-    localStorage.setItem("base", activeName);
   }, [activeName, onActiveNameChange]);
 
   return (

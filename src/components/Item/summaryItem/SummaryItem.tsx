@@ -6,8 +6,6 @@ const SummaryItem = () => {
 
   let userBase;
 
-  console.log(userBase);
-  
   switch (base) {
     case 'Casquinha':
       userBase = (

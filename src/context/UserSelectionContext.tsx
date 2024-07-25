@@ -9,9 +9,10 @@ interface UserSelectionContextProps {
   setFlavors: (flavors: string[]) => void;
   extra: string[];
   setExtra: (extra: string[]) => void;
-  extraValue: string[];
+  extraValue: number[];
   setExtraValue: (values: number[]) => void;
-  
+  tagBase: string;
+  setTagBase: (tagbase: string) => void;
 }
 
 const UserSelectionContext = createContext<UserSelectionContextProps | undefined>(undefined);
@@ -22,9 +23,10 @@ export const UserSelectionProvider: React.FC<{ children: ReactNode }> = ({ child
   const [flavors, setFlavors] = useState<string[]>([]);
   const [extra, setExtra] = useState<string[]>([]);
   const [extraValue, setExtraValue] = useState<number[]>([]);
+  const [tagBase, setTagBase] = useState<string | null>(null);
 
   return (
-    <UserSelectionContext.Provider value={{ base, setBase, baseValue, setBaseValue, flavors, setFlavors, extra, setExtra, extraValue, setExtraValue }}>
+    <UserSelectionContext.Provider value={{ base, setBase, tagBase, setTagBase, baseValue, setBaseValue, flavors, setFlavors, extra, setExtra, extraValue, setExtraValue }}>
       {children}
     </UserSelectionContext.Provider>
   );

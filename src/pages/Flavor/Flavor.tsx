@@ -1,5 +1,4 @@
-// src/pages/Flavor/Flavor.tsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserSelection } from "../../context/UserSelectionContext";
 import Button from "../../components/Buttons/Button";
@@ -8,11 +7,9 @@ import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import Title from "../../components/Title/Title";
 import Tags from "../../components/Tags/Tags";
 import Card from "../../components/Card/Card";
-
 import morangoImg from "../../assets/sabores/morango.png";
 import chocolateImg from "../../assets/sabores/chocolate.png";
 import cremeImg from "../../assets/sabores/creme.png";
-
 import casquinhaIcon from "../../assets/icons/casquinha.png";
 import cascaoIcon from "../../assets/icons/cascao.png";
 import copinhoIcon from "../../assets/icons/copinho.png";
@@ -60,42 +57,46 @@ const Flavor: React.FC = () => {
   ];
 
   const tags = flavorOptions.map((item) => item.name);
-  const [activeTag, setActiveTag] = useState<string | null>("Morango");
-  const { base, setBase, flavors, setFlavors } = useUserSelection();
+  const { base, setBase, tagBase, setTagBase, flavors, setFlavors } = useUserSelection();
   const navigate = useNavigate();
+  const sliderRef = useRef(null);
+  const [isTagClicked, setIsTagClicked] = useState(false);
 
   const handleTagClick = (index: number) => {
-    setActiveTag(tags[index]);
+    setTagBase(tags[index]);
+    setIsTagClicked(true);
+    if (sliderRef.current) {
+      sliderRef.current.slideTo(index);
+    }
   };
 
   const handleActiveNameChange = (name: string) => {
-    setActiveTag(name);
+    if (!isTagClicked) {
+      setTagBase(name);
+    } else {
+      setIsTagClicked(false);
+    }
   };
 
   const handleNextPage = () => {
-    if (activeTag) {
-      const newFlavor = [...flavors, activeTag];
+    if (tagBase) {
+      const newFlavor = [...flavors, tagBase];
       setFlavors(newFlavor);
       if ((base === "Casquinha" && newFlavor.length === 1) ||
           (base === "Cascão" && newFlavor.length === 2) ||
           (base === "Copinho" && newFlavor.length === 3)) {
         navigate("/extra");
       } else {
-        setActiveTag(null);
+        setTagBase(null);
       }
     }
   };
-
   const previousPage = () => {
     setBase('');
-    navigate(-1);
+    navigate("/base");
   };
+  
 
-  useEffect(() => {
-    if (!base) {
-      navigate("/");
-    }
-  }, [base, navigate]);
 
   let titleChildren = "Escolha o sabor da";
   let titleSpan = "";
@@ -144,8 +145,8 @@ const Flavor: React.FC = () => {
     <div className={styles.container}>
       <Breadcrumbs currentStep="Sabor" />
       <Title children={titleChildren} span={titleSpan} className="title" />
-      <Tags tags={tags} onTagClick={handleTagClick} activeName={activeTag} />
-      <SliderFlavor onActiveNameChange={handleActiveNameChange}>
+      <Tags tags={tags} onTagClick={handleTagClick} activeName={tagBase} />
+      <SliderFlavor ref={sliderRef} onActiveNameChange={handleActiveNameChange}>
         {flavorOptions.map((item, index) => (
           <Card
             key={index}

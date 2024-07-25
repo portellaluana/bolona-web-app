@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserSelection } from "../../context/UserSelectionContext";
 import Button from "../../components/Buttons/Button";
@@ -61,24 +61,21 @@ const Base: React.FC = () => {
   const tags = baseOptions.map((item) => item.name);
   const values = baseOptions.map((item) => item.price);
 
-  const [activeTag, setActiveTag] = useState<string | null>("Casquinha");
-  const { base, setBase, baseValue, setBaseValue } = useUserSelection();
+  const { base, setBase, tagBase, setTagBase, baseValue, setBaseValue } = useUserSelection();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (base) {
-      navigate("/flavor");
-    }
-  }, [base, navigate]);
+  const sliderRef = useRef(null);
 
   const handleTagClick = (index: number) => {
-    setActiveTag(tags[index]);
+    setTagBase(tags[index]);
     handlePrice(index);
+    if (sliderRef.current) {
+      sliderRef.current.slideTo(index);
+    }
   };
 
   const handleActiveNameChange = (name: string) => {
     const index = tags.findIndex(tag => tag === name);
-    setActiveTag(name);
+    setTagBase(name);
     handlePrice(index);
   };
 
@@ -87,9 +84,9 @@ const Base: React.FC = () => {
   };
 
   const handleNextPage = () => {
-    if (activeTag) {
-      const index = tags.findIndex(tag => tag === activeTag);
-      setBase(activeTag);
+    if (tagBase) {
+      const index = tags.findIndex(tag => tag === tagBase);
+      setBase(tagBase);
       handlePrice(index);
     }
   };
@@ -99,14 +96,20 @@ const Base: React.FC = () => {
     setBase(null);
   };
 
-  const activeBase = baseOptions.find((item) => item.name === activeTag);
+  const activeBase = baseOptions.find((item) => item.name === tagBase);
+
+  useEffect(() => {
+    if (base) {
+      navigate("/flavor");
+    }
+  }, [base, navigate]);
 
   return (
     <div className={styles.container}>
       <Breadcrumbs currentStep="Base" />
       <Title children={"Escolha"} span={"a base"} className="title" />
-      <Tags tags={tags} onTagClick={handleTagClick} activeName={activeTag} />
-      <Slider onActiveNameChange={handleActiveNameChange}>
+      <Tags tags={tags} onTagClick={handleTagClick} activeName={tagBase} />
+      <Slider ref={sliderRef} onActiveNameChange={handleActiveNameChange}>
         {baseOptions.map((item, index) => (
           <Card
             key={index}
