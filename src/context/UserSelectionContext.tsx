@@ -7,6 +7,8 @@ interface UserSelectionContextProps {
   setBaseValue: (value: number) => void;
   flavors: string[];
   setFlavors: (flavors: string[]) => void;
+  currentFlavor: string;
+  setCurrentFlavor: (flavor: string) => void;
   extra: string[];
   setExtra: (extra: string[]) => void;
   extraValue: number[];
@@ -21,12 +23,13 @@ export const UserSelectionProvider: React.FC<{ children: ReactNode }> = ({ child
   const [base, setBase] = useState<string | null>(null);
   const [baseValue, setBaseValue] = useState<number | null>(null);
   const [flavors, setFlavors] = useState<string[]>([]);
+  const [currentFlavor, setCurrentFlavor] = useState<string>();
   const [extra, setExtra] = useState<string[]>([]);
   const [extraValue, setExtraValue] = useState<number[]>([]);
-  const [tagBase, setTagBase] = useState<string | null>(null);
+  const [tagBase, setTagBase] = useState<string>();
 
   return (
-    <UserSelectionContext.Provider value={{ base, setBase, tagBase, setTagBase, baseValue, setBaseValue, flavors, setFlavors, extra, setExtra, extraValue, setExtraValue }}>
+    <UserSelectionContext.Provider value={{ base, setBase, tagBase, setTagBase, baseValue, setBaseValue, flavors, setFlavors, currentFlavor, setCurrentFlavor, extra, setExtra, extraValue, setExtraValue }}>
       {children}
     </UserSelectionContext.Provider>
   );

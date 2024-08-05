@@ -18,7 +18,7 @@ import cascaoIcon from "../../assets/icons/cascao.png";
 import copinhoIcon from "../../assets/icons/copinho.png";
 import canudinhoIcon from "../../assets/icons/canudinho.png";
 import coberturaIcon from "../../assets/icons/cobertura.png";
-import flavorEmpty from "../../assets/icons/empty.png";
+import emptyFlavor from "../../assets/icons/empty.png";
 
 const Base: React.FC = () => {
   const baseOptions = [
@@ -29,7 +29,7 @@ const Base: React.FC = () => {
       price: 5,
       image: `${casquinhaImg}`,
       extra1: `${canudinhoIcon}`,
-      firstFlavor: `${flavorEmpty}`,
+      firstFlavor: `${emptyFlavor}`,
       base: `${casquinhaIcon}`,
     },
     {
@@ -39,8 +39,8 @@ const Base: React.FC = () => {
       price: 10,
       image: `${cascaoImg}`,
       extra1: `${coberturaIcon}`,
-      firstFlavor: `${flavorEmpty}`,
-      secondFlavor: `${flavorEmpty}`,
+      firstFlavor: `${emptyFlavor}`,
+      secondFlavor: `${emptyFlavor}`,
       base: `${cascaoIcon}`,
     },
     {
@@ -51,9 +51,9 @@ const Base: React.FC = () => {
       image: `${copinhoImg}`,
       extra1: `${canudinhoIcon}`,
       extra2: `${coberturaIcon}`,
-      firstFlavor: `${flavorEmpty}`,
-      secondFlavor: `${flavorEmpty}`,
-      thirdFlavor: `${flavorEmpty}`,
+      firstFlavor: `${emptyFlavor}`,
+      secondFlavor: `${emptyFlavor}`,
+      thirdFlavor: `${emptyFlavor}`,
       base: `${copinhoIcon}`,
     },
   ];
