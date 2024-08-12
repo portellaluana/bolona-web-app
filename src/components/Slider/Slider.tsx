@@ -1,4 +1,3 @@
-// Slider.tsx
 import React, {
   useState,
   useEffect,

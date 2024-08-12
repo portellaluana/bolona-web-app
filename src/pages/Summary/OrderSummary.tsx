@@ -16,7 +16,7 @@ const OrderSummary: React.FC = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      navigate("/");
+      navigate("/assessment");
     }, 2000); // Duração de 2 segundos
   };
 

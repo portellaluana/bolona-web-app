@@ -4,6 +4,7 @@ import styles from "./breadcrumb.module.css";
 
 interface BreadcrumbsProps {
     currentStep?: string;
+    children?: string
 }
 
 const Breadcrumbs = ({ currentStep }: BreadcrumbsProps) => {
