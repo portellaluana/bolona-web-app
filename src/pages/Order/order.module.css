@@ -12,9 +12,8 @@ h5 {
 .text {
   font-size: 16px;
   font-weight: 400;
-  text-align: left;
-  max-width: 60%;
-  margin: 24px;
+  text-align: center;
+  max-width: 100%;
 }
 
 .textCounter{
@@ -27,7 +26,7 @@ h5 {
 }
 
 textarea{
-  height: 280px;
+  height: 170px;
   border-radius: 8px;
   background-color: #00000009;
   border: none;
@@ -46,20 +45,22 @@ textarea{
 }
 
 .content {
-  display: block;
+  display: inline-flex;
   width: 100%;
   margin: 0 auto;
   height: 63%;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .star {
-  width: 50px;
+  width: 32px;
   margin: 0 5px;
   filter: grayscale(1);
 }
 
 .starSelected {
-  width: 50px;
+  width: 32px;
   margin: 0 5px;
   filter: grayscale(0);
 }
@@ -68,5 +69,33 @@ textarea{
   width: 90%;
   margin: 24px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+.orderNumber{
+  text-align: center;
+  font-weight: 900;
+  padding: 16px;
+    background-color: #00000009;
+    border-radius: 100px;
+    width: 90%;
+}
+
+.containerAvaliacao{
+  height: 70%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.containerPedido{
+  height: 30%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.error{
+  text-align: center;
+  width: 100%;
+  padding: 32px 0;
+  font-weight: 400;
 }

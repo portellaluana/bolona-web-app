@@ -5,25 +5,34 @@ import { useNavigate } from "react-router-dom";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import Title from "../../components/Title/Title";
 import SummaryItem from "../../components/Item/summaryItem/SummaryItem";
+import { useUserSelection } from "../../context/UserSelectionContext";
 
 const OrderSummary: React.FC = () => {
-  // const { base, setBase, flavors, setFlavors } = useUserSelection();
+  const { setOrderValue } = useUserSelection();
 
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleHome = () => {
+  const sendOrder = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      navigate("/assessment");
-    }, 2000); // Duração de 2 segundos
+      navigate("/order");
+    }, 2000);
+    generateOrderValue()
   };
 
   const previousPage = () => {
     navigate("/extra");
     // setFlavors(null)
     // setBase(null)
+  };
+
+  const generateOrderValue = () => {
+    const newNumbers = Array.from({ length: 6 }, () =>
+      Math.floor(Math.random() * 10)
+    );
+    setOrderValue(newNumbers);
   };
 
   return (
@@ -42,7 +51,7 @@ const OrderSummary: React.FC = () => {
           <Button
             label={"Enviar pedido"}
             className="primaryExtra"
-            onClick={handleHome}
+            onClick={sendOrder}
           />
           <Button label={"Voltar"} className="secondary" onClick={previousPage} />
         </div>
