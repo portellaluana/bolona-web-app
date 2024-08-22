@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../Buttons/Button";
 import Price from "../../Card/Price/Price";
 import Title from "../../Title/Title";
 import styles from "./extraItem.module.css";
 import deleteIcon from "../../../assets/delete.png";
+import { useUserSelection } from "../../../context/UserSelectionContext";
 
 
 interface ItemProps {
@@ -14,27 +15,30 @@ interface ItemProps {
 }
 
 const Item = ({ image, name, currency, price }: ItemProps) => {
+  const { extra, setExtra  } = useUserSelection();
   const [activeButton, setActiveButton] = useState(false);
-  const [itens, setItens] = useState([]);
 
   const handleItemClick = () => {
     if (activeButton) {
-      const newItens = itens.filter(item => item.name !== name || item.price !== price);
-      setItens(newItens);
+      const newItens = extra.filter(item => item.name !== name || item.price !== price);
+      setExtra(newItens);
       setActiveButton(false);
     } else {
-      setItens([...itens, { name, price }]);
+      setExtra([...extra, { name, price }]);
       setActiveButton(true);
     }
-    console.log("itens", itens);
   };
 
   const handleRemoveItem = () => {
-    const newItens = itens.filter(item => item.name !== name || item.price !== price);
-    setItens(newItens);
+    const newItens = extra.filter(item => item.name !== name || item.price !== price);
+    setExtra(newItens);
     setActiveButton(false);
-    console.log("itens", itens);
+    console.log("itens", extra);
   };
+
+  useEffect(() => {
+    
+  }, [extra]);
 
   return (
     <div className={styles.container}>

@@ -2,26 +2,39 @@ import { useUserSelection } from "../../../context/UserSelectionContext";
 import styles from "./summaryItem.module.css";
 
 const SummaryItem = () => {
-  const { base, baseValue, flavors } = useUserSelection();
-
+  const { base, baseValue, flavors, extra } = useUserSelection();
+ 
   let userBase;
 
+  const totalExtras = extra.reduce((acc, item) => acc + item.price, 0);
+
+  const totalValue = baseValue + totalExtras;
+
+  const extraItems = extra.map((item, index) => (
+    <li key={index}>
+      <h4 className={styles.text}>
+        <span>{item.name}</span>
+      </h4>
+      <h5 className={styles.price}>R$ {item.price}</h5>
+    </li>
+  ));
+
   switch (base) {
-    case 'Casquinha':
+    case "Casquinha":
       userBase = (
         <h4 className={styles.text}>
           <span>{base}</span> sabor {flavors[0]}
         </h4>
       );
       break;
-    case 'Cascão':
+    case "Cascão":
       userBase = (
         <h4 className={styles.text}>
           <span>{base}</span> sabor {flavors[0]} e {flavors[1]}
         </h4>
       );
       break;
-    case 'Copinho':
+    case "Copinho":
       userBase = (
         <h4 className={styles.text}>
           <span>{base}</span> sabor {flavors[0]}, {flavors[1]} e {flavors[2]}
@@ -41,16 +54,11 @@ const SummaryItem = () => {
             {userBase}
             <h5 className={styles.price}>R$ {baseValue}</h5>
           </li>
-          {/* <li>
-            <h4 className={styles.text}>
-              <span>Cobertura</span> sabor morango
-            </h4>
-            <h5 className={styles.price}>R$ 1,00</h5>
-          </li> */}
+          {extraItems}
         </ul>
         <div className={styles.total}>
           <h4 className={styles.quantity}>TOTAL</h4>
-          <h4 className={styles.quantity}>R$ {baseValue}</h4>
+          <h4 className={styles.quantity}>R$ {totalValue}</h4>
         </div>
       </div>
     </div>
