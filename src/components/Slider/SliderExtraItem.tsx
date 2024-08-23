@@ -5,15 +5,15 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
   Children,
-  ReactNode
+  ReactNode,
 } from "react";
 import styles from "./slider.module.css";
 import { Swiper as SwiperType } from "swiper/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
-
 import { EffectCoverflow } from "swiper/modules";
+import arrowItem from "../../assets/arrow-item.png";
 
 interface SliderProps {
   onActiveNameChange: (name: string) => void;
@@ -24,7 +24,7 @@ interface SliderRef {
   slideTo: (index: number) => void;
 }
 
-const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = (
+const SliderExtraItem: ForwardRefRenderFunction<SliderRef, SliderProps> = (
   { onActiveNameChange, children },
   ref
 ) => {
@@ -45,6 +45,14 @@ const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = (
 
   return (
     <div className={styles.container}>
+      <button
+        className={`${styles.navButton} ${styles.leftButton}`}
+        onClick={() => swiperRef.current?.slidePrev()}
+      >
+<img src={arrowItem} alt="arrow" className={styles.arrowLeft} />
+
+      </button>
+
       <Swiper
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
@@ -59,18 +67,28 @@ const Slider: ForwardRefRenderFunction<SliderRef, SliderProps> = (
           stretch: 0,
           depth: 100,
           modifier: 2.5,
-          slideShadows: false
+          slideShadows: false,
         }}
         modules={[EffectCoverflow]}
         className={styles.content}
-        onSlideChange={(swiper) => setActiveName(children[swiper.activeIndex]?.props.title || "")}
+        onSlideChange={(swiper) =>
+          setActiveName(children[swiper.activeIndex]?.props.title || "")
+        }
       >
         {Children.map(children, (child) => (
           <SwiperSlide className={styles.slide}>{child}</SwiperSlide>
         ))}
       </Swiper>
+
+      <button
+        className={`${styles.navButton} ${styles.rightButton}`}
+        onClick={() => swiperRef.current?.slideNext()}
+      >
+       <img src={arrowItem} alt="arrow" className={styles.arrowRight} />
+
+      </button>
     </div>
   );
 };
 
-export default React.forwardRef(Slider);
+export default React.forwardRef(SliderExtraItem);

@@ -16,3 +16,44 @@
   padding: 0 32px;
   width: 60%;
 }
+
+/* .content {
+  position: relative;
+  width: 100%;
+} */
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.leftButton, .rightButton {
+width: 20px;
+height: 20px;
+color: black;
+font-size: 20px;
+font-weight: 900;
+padding: 0;
+}
+
+.arrowLeft, .arrowRight {
+    width: 10px;
+    margin: 0;
+}
+.leftButton{
+  left: 340px;
+  transform: rotateY(180deg);
+  right: 340px;
+
+} 
+.rightButton{
+  right: 340px;
+  top: 464px;
+}

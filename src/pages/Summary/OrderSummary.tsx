@@ -8,7 +8,7 @@ import SummaryItem from "../../components/Item/summaryItem/SummaryItem";
 import { useUserSelection } from "../../context/UserSelectionContext";
 
 const OrderSummary: React.FC = () => {
-  const { setOrderValue } = useUserSelection();
+  const { setOrderValue, setBase, setFlavors, setExtra } = useUserSelection();
 
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -23,9 +23,10 @@ const OrderSummary: React.FC = () => {
   };
 
   const previousPage = () => {
-    navigate("/extra");
-    // setFlavors(null)
-    // setBase(null)
+    navigate('/');
+    setBase(null)
+setFlavors([])
+setExtra([])
   };
 
   const generateOrderValue = () => {

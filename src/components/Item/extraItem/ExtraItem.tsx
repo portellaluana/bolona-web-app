@@ -33,12 +33,7 @@ const Item = ({ image, name, currency, price }: ItemProps) => {
     const newItens = extra.filter(item => item.name !== name || item.price !== price);
     setExtra(newItens);
     setActiveButton(false);
-    console.log("itens", extra);
   };
-
-  useEffect(() => {
-    
-  }, [extra]);
 
   return (
     <div className={styles.container}>

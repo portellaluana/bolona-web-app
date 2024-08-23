@@ -116,8 +116,9 @@ const Flavor: React.FC = () => {
   };
 
   const previousPage = () => {
-    setBase("");
-    navigate("/base");
+    navigate('/');
+    setBase(null)
+setFlavors([])
   };
 
   let titleChildren = "Escolha o sabor da";

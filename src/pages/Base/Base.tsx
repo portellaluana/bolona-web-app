@@ -61,7 +61,7 @@ const Base: React.FC = () => {
   const tags = baseOptions.map((item) => item.name);
   const values = baseOptions.map((item) => item.price);
 
-  const { base, setBase, tagBase, setTagBase, baseValue, setBaseValue } = useUserSelection();
+  const { setBase, tagBase, setTagBase, setBaseValue } = useUserSelection();
   const navigate = useNavigate();
   const sliderRef = useRef(null);
 
@@ -89,20 +89,13 @@ const Base: React.FC = () => {
       setBase(tagBase);
       handlePrice(index);
     }
+    navigate('/flavor');
   };
 
   const previousPage = () => {
-    navigate(-1);
-    setBase(null);
+    navigate('/');
+    setBase(null)
   };
-
-  const activeBase = baseOptions.find((item) => item.name === tagBase);
-
-  useEffect(() => {
-    if (base) {
-      navigate("/flavor");
-    }
-  }, [base, navigate]);
 
   return (
     <div className={styles.container}>

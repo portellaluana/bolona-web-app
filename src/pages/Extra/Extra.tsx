@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../../components/Buttons/Button";
 import styles from "./extra.module.css";
-import Slider from "../../components/Slider/Slider";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import Title from "../../components/Title/Title";
 
@@ -14,9 +13,14 @@ import canudinho from "../../assets/extra/extra-canudinho.png";
 import ExtraItem from "../../components/Item/extraItem/ExtraItem";
 
 import { useNavigate } from "react-router-dom";
+import { useUserSelection } from "../../context/UserSelectionContext";
+import SliderExtraItem from "../../components/Slider/SliderExtraItem";
 
 const Extra: React.FC = () => {
-  const items = [
+  const { base, setBase, setFlavors, setExtra } = useUserSelection();
+
+  // Defina os itens base
+  const allItems = [
     {
       image: `${casquinha}`,
       name: "Casquinha",
@@ -55,17 +59,31 @@ const Extra: React.FC = () => {
     },
   ];
 
+  let items;
+  
+  if (base === "Casquinha") {
+    items = allItems.filter(
+      (item) =>
+        item.name !== "Cobertura de Chocolate" &&
+        item.name !== "Cobertura de Morango"
+    );
+  } else if (base === "Cascão") {
+    items = allItems.filter((item) => item.name !== "Canudinho de Wafer");
+  } else {
+    items = allItems; 
+  }
+
   const navigate = useNavigate();
-  // const { setBase, setFlavors } = useUserSelection();
 
   const handleSummary = () => {
     navigate("/summary");
   };
 
   const previousPage = () => {
-    navigate('/flavor');
-    // setFlavors(null)
-    // setBase(null)
+    setBase(null);
+    setFlavors([]);
+    setExtra([]);
+    navigate('/');
   };
 
   return (
@@ -74,7 +92,7 @@ const Extra: React.FC = () => {
       <Title children={"Itens"} span={"adicionais"} className="title" />
       <Title children={"(Opcional)"} className="subtitle" />
       <div className={styles.content}>
-        <Slider onActiveNameChange={() => {}}>
+        <SliderExtraItem onActiveNameChange={() => {}}>
           {items.map((item, index) => (
             <ExtraItem
               key={index}
@@ -84,7 +102,7 @@ const Extra: React.FC = () => {
               price={item.price}
             />
           ))}
-        </Slider>
+        </SliderExtraItem>
       </div>
       <Button
         label={"Revisar pedido"}
