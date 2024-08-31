@@ -49,8 +49,7 @@ const SliderExtraItem: ForwardRefRenderFunction<SliderRef, SliderProps> = (
         className={`${styles.navButton} ${styles.leftButton}`}
         onClick={() => swiperRef.current?.slidePrev()}
       >
-<img src={arrowItem} alt="arrow" className={styles.arrowLeft} />
-
+        <img src={arrowItem} alt="arrow" className={styles.arrowLeft} />
       </button>
 
       <Swiper
@@ -84,8 +83,7 @@ const SliderExtraItem: ForwardRefRenderFunction<SliderRef, SliderProps> = (
         className={`${styles.navButton} ${styles.rightButton}`}
         onClick={() => swiperRef.current?.slideNext()}
       >
-       <img src={arrowItem} alt="arrow" className={styles.arrowRight} />
-
+        <img src={arrowItem} alt="arrow" className={styles.arrowRight} />
       </button>
     </div>
   );
