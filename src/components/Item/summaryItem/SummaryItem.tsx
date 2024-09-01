@@ -1,23 +1,26 @@
+import React from "react";
 import { useUserSelection } from "../../../context/UserSelectionContext";
 import styles from "./summaryItem.module.css";
 
-const SummaryItem = () => {
+const SummaryItem: React.FC = () => {
   const { base, baseValue, flavors, extra } = useUserSelection();
- 
-  let userBase;
+
+  const safeBaseValue = baseValue ?? 0;
 
   const totalExtras = extra.reduce((acc, item) => acc + item.price, 0);
 
-  const totalValue = baseValue + totalExtras;
+  const totalValue = safeBaseValue + totalExtras;
 
   const extraItems = extra.map((item, index) => (
     <li key={index}>
       <h4 className={styles.text}>
-        <span>{item.name}</span>
+        <span>{item.name}</span> adicional
       </h4>
       <h5 className={styles.price}>R$ {item.price}</h5>
     </li>
   ));
+
+  let userBase;
 
   switch (base) {
     case "Casquinha":
@@ -52,7 +55,7 @@ const SummaryItem = () => {
         <ul>
           <li>
             {userBase}
-            <h5 className={styles.price}>R$ {baseValue}</h5>
+            <h5 className={styles.price}>R$ {safeBaseValue}</h5>
           </li>
           {extraItems}
         </ul>

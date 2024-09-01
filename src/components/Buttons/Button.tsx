@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./button.module.css";
 
 interface ButtonProps {
@@ -8,7 +9,7 @@ interface ButtonProps {
 
 const Button = ({ label, onClick, className }: ButtonProps) => {
   return (
-    <button onClick={onClick} className={className ? styles[className] : ''}>
+    <button onClick={onClick} className={className ? styles[className] : ""}>
       {label}
     </button>
   );

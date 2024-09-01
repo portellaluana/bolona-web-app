@@ -39,7 +39,9 @@ const Flavor: React.FC = () => {
     creme: cremeIcon,
   };
 
-  const selectedFlavorIcon = currentFlavor ? currentFlavorIcon[currentFlavor.toLowerCase()] : emptyFlavor;
+  const selectedFlavorIcon = currentFlavor
+    ? currentFlavorIcon[currentFlavor.toLowerCase()]
+    : emptyFlavor;
 
   const flavorOptions = [
     {
@@ -77,7 +79,7 @@ const Flavor: React.FC = () => {
     },
   ];
 
-  const tags = flavorOptions.map(item => item.name);
+  const tags = flavorOptions.map((item) => item.name);
   const navigate = useNavigate();
   const sliderRef = useRef(null);
   const [isTagClicked, setIsTagClicked] = useState(false);
@@ -116,12 +118,12 @@ const Flavor: React.FC = () => {
   };
 
   const previousPage = () => {
-    navigate('/');
-    setBase(null)
-setFlavors([])
+    navigate("/");
+    setBase(null);
+    setFlavors([]);
   };
 
-  let titleChildren = "Escolha o sabor da";
+  let titleChildren = "Sabor da";
   let titleSpan = "";
 
   flavorOptions.forEach((option) => {
@@ -140,7 +142,9 @@ setFlavors([])
       } else {
         titleSpan = "segunda bolona";
         option.extra1 = coberturaIcon;
-        option.firstFlavor = flavors[0] ? currentFlavorIcon[flavors[0].toLowerCase()] : emptyFlavor;
+        option.firstFlavor = flavors[0]
+          ? currentFlavorIcon[flavors[0].toLowerCase()]
+          : emptyFlavor;
         option.secondFlavor = selectedFlavorIcon;
         option.base = cascaoIcon;
       }
@@ -159,7 +163,9 @@ setFlavors([])
           titleSpan = "segunda bolona";
           option.extra2 = coberturaIcon;
           option.extra1 = canudinhoIcon;
-          option.firstFlavor = flavors[0] ? currentFlavorIcon[flavors[0].toLowerCase()] : emptyFlavor;
+          option.firstFlavor = flavors[0]
+            ? currentFlavorIcon[flavors[0].toLowerCase()]
+            : emptyFlavor;
           option.secondFlavor = selectedFlavorIcon;
           option.thirdFlavor = emptyFlavor;
           option.base = copinhoIcon;
@@ -168,8 +174,12 @@ setFlavors([])
           titleSpan = "terceira bolona";
           option.extra2 = coberturaIcon;
           option.extra1 = canudinhoIcon;
-          option.firstFlavor = flavors[0] ? currentFlavorIcon[flavors[0].toLowerCase()] : emptyFlavor;
-          option.secondFlavor = flavors[1] ? currentFlavorIcon[flavors[1].toLowerCase()] : emptyFlavor;
+          option.firstFlavor = flavors[0]
+            ? currentFlavorIcon[flavors[0].toLowerCase()]
+            : emptyFlavor;
+          option.secondFlavor = flavors[1]
+            ? currentFlavorIcon[flavors[1].toLowerCase()]
+            : emptyFlavor;
           option.thirdFlavor = selectedFlavorIcon;
           option.base = copinhoIcon;
           break;

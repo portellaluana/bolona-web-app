@@ -6,7 +6,6 @@ import styles from "./extraItem.module.css";
 import deleteIcon from "../../../assets/delete.png";
 import { useUserSelection } from "../../../context/UserSelectionContext";
 
-
 interface ItemProps {
   image: string;
   name: string;
@@ -15,12 +14,14 @@ interface ItemProps {
 }
 
 const Item = ({ image, name, currency, price }: ItemProps) => {
-  const { extra, setExtra  } = useUserSelection();
+  const { extra, setExtra } = useUserSelection();
   const [activeButton, setActiveButton] = useState(false);
 
   const handleItemClick = () => {
     if (activeButton) {
-      const newItens = extra.filter(item => item.name !== name || item.price !== price);
+      const newItens = extra.filter(
+        (item) => item.name !== name || item.price !== price
+      );
       setExtra(newItens);
       setActiveButton(false);
     } else {
@@ -30,7 +31,9 @@ const Item = ({ image, name, currency, price }: ItemProps) => {
   };
 
   const handleRemoveItem = () => {
-    const newItens = extra.filter(item => item.name !== name || item.price !== price);
+    const newItens = extra.filter(
+      (item) => item.name !== name || item.price !== price
+    );
     setExtra(newItens);
     setActiveButton(false);
   };
@@ -38,17 +41,12 @@ const Item = ({ image, name, currency, price }: ItemProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {activeButton && (
-          <a onClick={handleRemoveItem} className={styles.deleteButton}>
-            <img src={deleteIcon} alt="Delete" />
-          </a>
-        )}
         <img src={image} alt={name} />
         <Title children={name} className="item-name" />
         <Price currency={currency} price={price} className="priceExtra" />
         <Button
-          label={activeButton ? "Adicionado" : "Adicionar"}
-          className={activeButton ? "tagButton tagButtonActive" : "tagButton"}
+          label={activeButton ? "Remover" : "Adicionar"}
+          className={activeButton ? "tagButtonActive" : "tagButton"}
           onClick={handleItemClick}
         />
       </div>

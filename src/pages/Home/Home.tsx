@@ -18,18 +18,30 @@ const Home: React.FC = () => {
 
   return (
     <>
-    {isLoading ? (
-      <div className={styles.loadingScreen}>
-        <figure className={styles.loading} />
-      </div>
-    ) : (
-    <div className={styles.container}>
-      <img src={iconLogo} alt="icone-logo" className={styles.icon}/>
-      <h1 className={styles.highlight}>Chega bolona derrete.</h1>
-      <Button label={"Começar"} className='primary'onClick={handleBase}/>
-    </div>
-  )}
-  </>);
+      {isLoading ? (
+        <div className={styles.loadingScreen}>
+          <figure className={styles.loading} />
+        </div>
+      ) : (
+        <div className={styles.container}>
+          <div className={styles.bgImg}></div>
+          <div className={styles.content}>
+            <div className={styles.icon}>
+              <img src={iconLogo} alt="icone-logo" className={styles.icon} />
+            </div>
+            <h1 className={styles.highlight}>
+              Chega<br></br>bolona<br></br>derrete.
+            </h1>
+            <Button
+              label={"Começar"}
+              className="primaryHome"
+              onClick={handleBase}
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default Home;

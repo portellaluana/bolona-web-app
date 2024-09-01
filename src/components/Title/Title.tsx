@@ -5,12 +5,27 @@ interface TitleProps {
   children?: ReactNode;
   span?: string;
   className?: string;
+  label?: string;
+  labelClassName?: string;
 }
 
-const Title = ({ children, span, className }: TitleProps) => {
+const Title = ({
+  children,
+  span,
+  className,
+  label,
+  labelClassName,
+}: TitleProps) => {
   return (
-    <h1 className={className ? styles[className] : "title"}>
-      {children}<br></br>{span ? <span>{span}</span> : ""}
+    <h1 className={className ? styles[className] : styles.title}>
+      {children} {span ? <span>{span}</span> : ""}
+      {label && (
+        <label
+          className={labelClassName ? styles[labelClassName] : styles.label}
+        >
+          {label}
+        </label>
+      )}
     </h1>
   );
 };

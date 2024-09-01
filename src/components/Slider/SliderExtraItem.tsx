@@ -75,7 +75,7 @@ const SliderExtraItem: ForwardRefRenderFunction<SliderRef, SliderProps> = (
         }
       >
         {Children.map(children, (child) => (
-          <SwiperSlide className={styles.slide}>{child}</SwiperSlide>
+          <SwiperSlide className={styles.slideExtraItem}>{child}</SwiperSlide>
         ))}
       </Swiper>
 

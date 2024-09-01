@@ -1,5 +1,5 @@
 .container {
-  max-width: 80%;
+  width: 100%;
   margin: 0 auto;
   height: 63%;
   display: flex;
@@ -17,6 +17,9 @@
   margin: 0 auto;
   padding: 0 32px;
   width: 60%;
+}
+.slideExtraItem {
+  padding: 0 12px !important;
 }
 
 .navButton {
@@ -47,4 +50,47 @@
 }
 .leftButton {
   transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 767px) {
+  .content {
+    overflow: hidden !important;
+    perspective: 1200px !important;
+  }
+  .leftButton {
+    margin: 0 0 0 40px;
+  }
+  .rightButton {
+    margin: 0 40px 0 0;
+  }
+}
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .content {
+    overflow: hidden !important;
+    perspective: 2000px !important;
+  }
+  .slideExtraItem {
+    padding: 0;
+  }
+  .leftButton {
+    margin: 0 0 0 200px;
+  }
+  .rightButton {
+    margin: 0 200px 0 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .content {
+    overflow: hidden !important;
+    perspective: 2000px !important;
+  }
+  .slideExtraItem {
+    padding: 0;
+  }
+  .leftButton {
+    margin: 0 0 0 280px;
+  }
+  .rightButton {
+    margin: 0 280px 0 0;
+  }
 }

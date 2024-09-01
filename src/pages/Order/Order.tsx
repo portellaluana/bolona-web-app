@@ -6,7 +6,7 @@ import Title from "../../components/Title/Title";
 import starImg from "../../assets/star.png";
 import { useUserSelection } from "../../context/UserSelectionContext";
 
-const Assessment: React.FC = () => {
+const Order: React.FC = () => {
   const stars = [
     { id: 1, name: "1" },
     { id: 2, name: "2" },
@@ -21,7 +21,10 @@ const Assessment: React.FC = () => {
   const [error, setError] = useState(false);
   const [text, setText] = useState("");
   const navigate = useNavigate();
-  const { orderValue } = useUserSelection();
+  // const { orderValue } = useUserSelection();
+
+  const orderValue = localStorage.getItem("orderNumber");
+  const order = orderValue.replace(/,/g, "");
 
   const handleReview = () => {
     setReviewed(true);
@@ -60,15 +63,19 @@ const Assessment: React.FC = () => {
         <Title children={"Número do"} span={"pedido"} className="title" />
         <div className={styles.content}>
           <div className={styles.containerPedido}>
-            <h1 className={styles.orderNumber}>{orderValue}</h1>
+            <h1 className={styles.orderNumber}>{order}</h1>
             {error && (
-              <h1 children={"Por favor, dirija-se ao caixa"} className={styles.error} />
+              <h1
+                children={"Por favor, dirija-se ao caixa"}
+                className={styles.error}
+              />
             )}
           </div>
           {!reviewed && !error && (
             <div className={styles.containerAvaliacao}>
               <h4 className={styles.text}>
-                Enquanto preparamos seu pedido, que tal<br />avaliar nosso atendimento?
+                Enquanto preparamos seu pedido, que tal avaliar nosso
+                atendimento?
               </h4>
 
               <div className={styles.containerStars}>
@@ -131,4 +138,4 @@ const Assessment: React.FC = () => {
   );
 };
 
-export default Assessment;
+export default Order;

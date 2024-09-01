@@ -22,7 +22,7 @@
 .loading {
   background-image: url(../../assets/loading/loading.gif);
   background-repeat: no-repeat;
-  background-size: contain; /* Ajusta a imagem ao tamanho do contêiner */
+  background-size: contain;
   width: 180px;
   height: 270px;
 }

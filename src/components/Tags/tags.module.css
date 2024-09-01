@@ -5,3 +5,14 @@
   padding: 24px;
   gap: 10px;
 }
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    display: none;
+  }
+}

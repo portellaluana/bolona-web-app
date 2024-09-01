@@ -1,8 +1,10 @@
 .container {
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px;
+  padding: 24px 0;
+  margin: 0 auto;
 }
 
 h5 {
@@ -22,4 +24,16 @@ h5 {
 
 .step {
   margin-right: 5px;
+}
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 50%;
+    margin: 0 auto;
+  }
 }

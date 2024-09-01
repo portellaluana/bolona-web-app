@@ -19,14 +19,14 @@ const OrderSummary: React.FC = () => {
       setIsLoading(false);
       navigate("/order");
     }, 2000);
-    generateOrderValue()
+    generateOrderValue();
   };
 
   const previousPage = () => {
-    navigate('/');
-    setBase(null)
-setFlavors([])
-setExtra([])
+    navigate("/");
+    setBase(null);
+    setFlavors([]);
+    setExtra([]);
   };
 
   const generateOrderValue = () => {
@@ -34,6 +34,7 @@ setExtra([])
       Math.floor(Math.random() * 10)
     );
     setOrderValue(newNumbers);
+    localStorage.setItem("orderNumber", newNumbers);
   };
 
   return (
@@ -54,7 +55,11 @@ setExtra([])
             className="primaryExtra"
             onClick={sendOrder}
           />
-          <Button label={"Voltar"} className="secondary" onClick={previousPage} />
+          <Button
+            label={"Voltar"}
+            className="secondary"
+            onClick={previousPage}
+          />
         </div>
       )}
     </div>

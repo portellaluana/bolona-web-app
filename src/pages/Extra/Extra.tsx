@@ -19,7 +19,6 @@ import SliderExtraItem from "../../components/Slider/SliderExtraItem";
 const Extra: React.FC = () => {
   const { base, setBase, setFlavors, setExtra } = useUserSelection();
 
-  // Defina os itens base
   const allItems = [
     {
       image: `${casquinha}`,
@@ -60,7 +59,7 @@ const Extra: React.FC = () => {
   ];
 
   let items;
-  
+
   if (base === "Casquinha") {
     items = allItems.filter(
       (item) =>
@@ -70,7 +69,7 @@ const Extra: React.FC = () => {
   } else if (base === "Cascão") {
     items = allItems.filter((item) => item.name !== "Canudinho de Wafer");
   } else {
-    items = allItems; 
+    items = allItems;
   }
 
   const navigate = useNavigate();
@@ -83,14 +82,19 @@ const Extra: React.FC = () => {
     setBase(null);
     setFlavors([]);
     setExtra([]);
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <div className={styles.container}>
       <Breadcrumbs currentStep="Extra" />
-      <Title children={"Itens"} span={"adicionais"} className="title" />
-      <Title children={"(Opcional)"} className="subtitle" />
+      <Title
+        children={"Itens"}
+        span={"adicionais"}
+        label=" (Opcional)"
+        labelClassName="labelClass"
+        className="title"
+      />
       <div className={styles.content}>
         <SliderExtraItem onActiveNameChange={() => {}}>
           {items.map((item, index) => (
